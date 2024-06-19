@@ -1,0 +1,102 @@
+Sure, here are some common stack and queue interview questions:
+Stack Questions:
+
+Implement a stack data structure:
+
+Write code to implement a stack using an array or a linked list.
+Implement the push, pop, peek, and isEmpty operations.
+
+
+Reverse a string using a stack:
+
+Write a function that takes a string as input and returns the reversed string using a stack data structure.
+
+
+Check for balanced parentheses:
+
+Given a string containing parentheses, braces, and brackets, write a function to check if the parentheses are balanced.
+
+
+Evaluate postfix/reverse Polish notation:
+
+Write a program to evaluate a postfix/reverse Polish notation expression using a stack.
+
+
+Sort a stack:
+
+Write a program to sort the elements of a stack in ascending or descending order.
+
+
+
+Queue Questions:
+
+Implement a queue data structure:
+
+Write code to implement a queue using an array or a linked list.
+Implement the enqueue, dequeue, front, rear, and isEmpty operations.
+
+
+Reverse the first k elements of a queue:
+
+Given a queue and an integer k, write a function to reverse the order of the first k elements in the queue.
+
+
+Generate binary numbers from 1 to n using a queue:
+
+Write a program to print all binary numbers from 1 to n using a queue data structure.
+
+
+Implement a circular tour problem:
+
+Given a circular array of gas stations and the amount of gas and cost to travel to the next station, find the starting station from which you can complete the circular tour.
+
+
+Implement a priority queue:
+
+Write code to implement a priority queue data structure.
+Implement the enqueue, dequeue, and peek operations based on priority.
+
+
+
+These questions cover various aspects of stack and queue data structures, including implementation, manipulation, and problem-solving scenarios. Make sure to understand the underlying concepts, time and space complexities, and be prepared to write clean and efficient code during the interview. Copy
+
+
+Conceptual Questions:
+
+Explain the difference between a Stack and a Queue.
+
+A Stack follows LIFO (Last-In-First-Out) principle, where the element added last is removed first. Think of a stack of plates, you remove the top plate you added last.
+A Queue follows FIFO (First-In-First-Out) principle, where the element added first is removed first. Imagine a line at a store, the person who joined the line first gets served first.
+Describe real-world applications of Stacks and Queues.
+
+Stacks: Backtracking algorithms, browser history, undo/redo functionality in applications.
+Queues: Task scheduling, managing printer jobs, handling requests in a server.
+What are the time complexities of basic operations (push, pop, enqueue, dequeue) for Stacks and Queues?
+
+For both stacks and queues, these operations are typically constant time (O(1)) in well-implemented scenarios.
+Coding and Implementation Questions:
+
+Implement a Stack or Queue using an Array.
+
+This is a basic question to test your understanding of the underlying data structure.
+Implement a Queue using two Stacks.
+
+This requires some creative thinking and manipulation of stacks to achieve FIFO behavior.
+Reverse a String using a Stack.
+
+Stacks are perfect for reversing operations due to their LIFO nature.
+Check for balanced parentheses in an expression using a Stack.
+
+Stacks help keep track of opening parentheses and ensure they are closed in the correct order.
+Advanced Questions:
+
+Sort a Stack using recursion or a temporary stack.
+Implement multiple stacks in a single array.
+Additional Tips:
+
+Be prepared to discuss the trade-offs between using stacks and queues for specific problems.
+Be able to analyze the time and space complexity of your solutions.
+If you get stuck, explain your thought process and ask clarifying questions from the interviewer.
+
+
+
