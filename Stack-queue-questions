@@ -98,5 +98,254 @@ Be prepared to discuss the trade-offs between using stacks and queues for specif
 Be able to analyze the time and space complexity of your solutions.
 If you get stuck, explain your thought process and ask clarifying questions from the interviewer.
 
+... CODE ....................
+Stack Interview Questions
+Question: Write code to implement a stack using an array.
+
+class Stack:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.stack = []
+    
+    def push(self, item):
+        if len(self.stack) < self.capacity:
+            self.stack.append(item)
+        else:
+            raise Exception("Stack overflow")
+    
+    def pop(self):
+        if len(self.stack) > 0:
+            return self.stack.pop()
+        else:
+            raise Exception("Stack underflow")
+    
+    def peek(self):
+        if len(self.stack) > 0:
+            return self.stack[-1]
+        else:
+            return None
+    
+    def is_empty(self):
+        return len(self.stack) == 0
+
+
+Implement a Stack using a Linked List
+Question: Write code to implement a stack using a singly linked list.
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.head = None
+
+    def push(self, item):
+        new_node = Node(item)
+        new_node.next = self.head
+        self.head = new_node
+
+    def pop(self):
+        if self.head is None:
+            raise Exception("Stack underflow")
+        popped = self.head.data
+        self.head = self.head.next
+        return popped
+
+    def peek(self):
+        if self.head is None:
+            return None
+        return self.head.data
+
+    def is_empty(self):
+        return self.head is None
+
+Balanced Parentheses
+Question: Given an expression string, check if the parentheses are balanced.
+
+def is_balanced(expression):
+    stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}
+    for char in expression:
+        if char in pairs.values():
+            stack.append(char)
+        elif char in pairs.keys():
+            if stack == [] or pairs[char] != stack.pop():
+                return False
+    return stack == []
+
+# Example usage
+print(is_balanced("{[()]}"))  # Output: True
+print(is_balanced("{[(])}"))  # Output: False
+
+
+Evaluate Postfix Expression
+Evaluate a postfix expression using a stack.
+
+def evaluate_postfix(expression):
+    stack = []
+    for char in expression:
+        if char.isdigit():
+            stack.append(int(char))
+        else:
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+            if char == '+':
+                stack.append(operand1 + operand2)
+            elif char == '-':
+                stack.append(operand1 - operand2)
+            elif char == '*':
+                stack.append(operand1 * operand2)
+            elif char == '/':
+                stack.append(int(operand1 / operand2))
+    return stack.pop()
+
+# Example usage
+print(evaluate_postfix("231*+9-"))  # Output: -4
+
+
+..............
+Queue Interview Questions
+Implement a Queue using an array
+Question: Write code to implement a queue using an array.
+class Queue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.queue = []
+    
+    def enqueue(self, item):
+        if len(self.queue) < self.capacity:
+            self.queue.append(item)
+        else:
+            raise Exception("Queue overflow")
+    
+    def dequeue(self):
+        if len(self.queue) > 0:
+            return self.queue.pop(0)
+        else:
+            raise Exception("Queue underflow")
+    
+    def peek(self):
+        if len(self.queue) > 0:
+            return self.queue[0]
+        else:
+            return None
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+
+Implement a Queue using a Linked List
+Question: Write code to implement a queue using a singly linked list.
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Queue:
+    def __init__(self):
+        self.front = self.rear = None
+
+    def enqueue(self, item):
+        new_node = Node(item)
+        if self.rear is None:
+            self.front = self.rear = new_node
+            return
+        self.rear.next = new_node
+        self.rear = new_node
+
+    def dequeue(self):
+        if self.front is None:
+            raise Exception("Queue underflow")
+        temp = self.front
+        self.front = temp.next
+        if self.front is None:
+            self.rear = None
+        return temp.data
+
+    def peek(self):
+        if self.front is None:
+            return None
+        return self.front.data
+
+    def is_empty(self):
+        return self.front is None
+
+Generate Binary Numbers from 1 to N
+
+Question: Given a number N, write code to generate binary numbers from 1 to N using a queue.
+
+
+def generate_binary_numbers(n):
+    result = []
+    queue = ["1"]
+    while n > 0:
+        n -= 1
+        front = queue.pop(0)
+        result.append(front)
+        queue.append(front + "0")
+        queue.append(front + "1")
+    return result
+
+# Example usage
+print(generate_binary_numbers(5))  # Output: ['1', '10', '11', '100', '101']
+
+Implement a Circular Queue
+Question: Write code to implement a circular queue using an array.
+class CircularQueue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.queue = [None] * capacity
+        self.front = self.rear = -1
+
+    def is_full(self):
+        return (self.rear + 1) % self.capacity == self.front
+
+    def is_empty(self):
+        return self.front == -1
+
+    def enqueue(self, item):
+        if self.is_full():
+            raise Exception("Queue overflow")
+        elif self.is_empty():
+            self.front = self.rear = 0
+        else:
+            self.rear = (self.rear + 1) % self.capacity
+        self.queue[self.rear] = item
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Exception("Queue underflow")
+        item = self.queue[self.front]
+        if self.front == self.rear:
+            self.front = self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.capacity
+        return item
+
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.queue[self.front]
+
+# Example usage
+q = CircularQueue(5)
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print(q.dequeue())  # Output: 1
+q.enqueue(4)
+q.enqueue(5)
+print(q.peek())  # Output: 2
+
+
+
+
+
+
+
+
+
 
 
